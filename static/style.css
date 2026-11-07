@@ -16,3 +16,16 @@ footer{border-top:1px solid var(--line);padding:32px max(calc((100vw - var(--max
     object-fit: contain;
     display: block;
 }
+.author-credit,
+.founder-credit {
+    color: #b9a2e8;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    margin-top: 14px;
+}
+
+.author-credit strong,
+.founder-credit strong {
+    color: #ffffff;
+    font-weight: 600;
+}
