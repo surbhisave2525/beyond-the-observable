@@ -14,17 +14,19 @@
          alt="Stellar waves beneath the Milky Way">
 </div>
 <p class="caption">The hidden vibrations of stars across the Milky Way.</p>
-{% else %}
-<div class="article-art {{ article.visual }}">
-    <div class="accretion"></div>
-    <div class="hole"></div>
-</div>
-<p class="caption">Cosmic artwork created with CSS for this publication.</p>
 {% elif article.slug == "gravitational-waves" %}
 <div class="article-art blackhole-photo">
     <img src="{{ url_for('static', filename='Cosmic Black Hole Merger Waves.png') }}"
          alt="Gravitational waves produced by merging black holes">
 </div>
 <p class="caption">An artistic representation of gravitational waves from merging black holes.</p>
+
+{% else %}
+<div class="article-art {{ article.visual }}">
+    <div class="accretion"></div>
+    <div class="hole"></div>
+</div>
+<p class="caption">Cosmic artwork created with CSS for this publication.</p>
+
 {% endif %}
 <div class="article-body"><aside><small>IN THIS STORY</small><ol>{% for h,ps in article.sections %}<li><a href="#s{{ loop.index }}">{{ h }}</a></li>{% endfor %}<li><a href="#refs">Further reading</a></li></ol></aside><div class="prose"><p class="opening">{{ article.excerpt }}</p>{% for h,ps in article.sections %}<section id="s{{ loop.index }}"><h2>{{ h }}</h2>{% for x in ps %}<p>{{ x }}</p>{% endfor %}{% if article.slug == 'black-holes' and loop.index == 2 %}<div class="equation">R<sub>s</sub> = <span>2GM</span> / c²</div>{% endif %}{% if article.slug == 'black-holes' and loop.index == 4 %}<div class="equation">Δa ≈ 2GML / r³</div>{% endif %}</section>{% endfor %}<section id="refs"><h2>Further reading</h2><ol>{% for r in article.refs %}<li>{{ r }}</li>{% endfor %}</ol></section></div></div></main>{% endblock %}
