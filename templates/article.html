@@ -1,4 +1,16 @@
 {% extends "base.html" %}{% block title %}{{ article.title }} — Beyond the Observable{% endblock %}{% block content %}
 <main class="article wrap"><a class="back" href="/">← Back to all stories</a><header class="article-head"><small>{{ article.category }} · BEYOND THE OBSERVABLE</small><h1>{{ article.title }}</h1><p>{{ article.subtitle }}</p><div class="byline">✦ &nbsp; Beyond the Observable &nbsp; · &nbsp; {{ article.read }}</div></header>
-<div class="article-art {{ article.visual }}"><div class="accretion"></div><div class="hole"></div></div><p class="caption">Cosmic artwork created with CSS for this publication.</p>
+{% if article.slug == "black-holes" %}
+<div class="article-art blackhole-photo">
+    <img src="{{ url_for('static', filename='eht_blackhole.jpg') }}"
+         alt="M87 black hole imaged by the Event Horizon Telescope">
+</div>
+<p class="caption">M87* observed by the Event Horizon Telescope.</p>
+{% else %}
+<div class="article-art {{ article.visual }}">
+    <div class="accretion"></div>
+    <div class="hole"></div>
+</div>
+<p class="caption">Cosmic artwork created with CSS for this publication.</p>
+{% endif %}
 <div class="article-body"><aside><small>IN THIS STORY</small><ol>{% for h,ps in article.sections %}<li><a href="#s{{ loop.index }}">{{ h }}</a></li>{% endfor %}<li><a href="#refs">Further reading</a></li></ol></aside><div class="prose"><p class="opening">{{ article.excerpt }}</p>{% for h,ps in article.sections %}<section id="s{{ loop.index }}"><h2>{{ h }}</h2>{% for x in ps %}<p>{{ x }}</p>{% endfor %}{% if article.slug == 'black-holes' and loop.index == 2 %}<div class="equation">R<sub>s</sub> = <span>2GM</span> / c²</div>{% endif %}{% if article.slug == 'black-holes' and loop.index == 4 %}<div class="equation">Δa ≈ 2GML / r³</div>{% endif %}</section>{% endfor %}<section id="refs"><h2>Further reading</h2><ol>{% for r in article.refs %}<li>{{ r }}</li>{% endfor %}</ol></section></div></div></main>{% endblock %}
