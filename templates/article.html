@@ -8,6 +8,12 @@
          alt="M87 black hole imaged by the Event Horizon Telescope">
 </div>
 <p class="caption">M87* observed by the Event Horizon Telescope.</p>
+{% elif article.slug == "asteroseismology" %}
+<div class="article-art blackhole-photo">
+    <img src="{{ url_for('static', filename='Stellar Waves Beneath the Milky Way.png') }}"
+         alt="Stellar waves beneath the Milky Way">
+</div>
+<p class="caption">The hidden vibrations of stars across the Milky Way.</p>
 {% else %}
 <div class="article-art {{ article.visual }}">
     <div class="accretion"></div>
