@@ -6,4 +6,24 @@
 <section class="wrap stories" id="explore"><small>START EXPLORING</small><h2>Stories from the <em>cosmos.</em></h2><a class="feature" href="/article/black-holes"><div class="feature-art"><div class="accretion"></div><div class="hole"></div></div><div><small>BLACK HOLES · FEATURED STORY</small><h3>What Happens If You Fall Into a Black Hole?</h3><p>Cross the event horizon, encounter warped spacetime and discover why gravity can stretch matter into cosmic threads.</p><b>Read the story ↗</b></div></a>
 <div class="cards">{% for a in articles if a.slug != 'black-holes' %}<a class="card" href="/article/{{ a.slug }}"><div class="card-art {{ a.visual }}">✧</div><small>{{ a.category }}</small><h3>{{ a.title }}</h3><p>{{ a.excerpt }}</p><b>{{ a.read }} ↗</b></a>{% endfor %}</div></section>
 <section class="quote"><span>“</span><blockquote>Somewhere, something incredible<br>is waiting to be known.</blockquote><small>— CARL SAGAN</small></section>
-<section class="wrap newsletter"><div><small>NOTES FROM THE UNIVERSE</small><h2>Stay <em>curious.</em></h2><p>New ideas, cosmic discoveries and thoughtful science writing.</p></div><form onsubmit="event.preventDefault();this.querySelector('small').textContent='Thanks! Connect a mailing-list service to activate subscriptions.'"><input type="email" placeholder="Your email address" required><button>Subscribe ↗</button><small>No spam. Just the occasional cosmic thought.</small></form></section></main>{% endblock %}
+<section class="wrap newsletter"><div><small>NOTES FROM THE UNIVERSE</small><h2>Stay <em>curious.</em></h2><p>New ideas, cosmic discoveries and thoughtful science writing.</p></div><form
+    action="https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME"
+    method="post"
+    class="newsletter-form"
+>
+    <input
+        type="email"
+        name="email"
+        placeholder="Your email address"
+        aria-label="Your email address"
+        required
+    >
+
+    <input type="hidden" name="embed" value="1">
+
+    <button type="submit">Subscribe ↗</button>
+
+    <small>No spam. Just the occasional cosmic thought.</small>
+</form></section></main>{% endblock %}
+
+
